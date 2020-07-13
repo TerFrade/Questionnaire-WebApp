@@ -347,3 +347,6 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+
+# Any node modules folder are ignored within folder or sub folders
+node_modules/
