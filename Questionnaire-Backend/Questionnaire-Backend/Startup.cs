@@ -19,6 +19,13 @@ namespace Questionnaire_Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<QuestionnaireContext>(options => options.UseSqlServer(Configuration.GetConnectionString("QuestionnaireContext")));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+            });
             services.AddControllers();
             services.AddSwaggerGen();
         }
@@ -26,6 +33,7 @@ namespace Questionnaire_Backend
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseCors("CorsPolicy");
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
