@@ -9,7 +9,7 @@ using Questionnaire_Backend.Data;
 
 namespace Questionnaire_Backend.Migrations
 {
-    [DbContext(typeof(QuestionnaireContext))]
+    [DbContext(typeof(QuestionnaireDbContext))]
     [Migration("20200827111907_Initial")]
     partial class Initial
     {

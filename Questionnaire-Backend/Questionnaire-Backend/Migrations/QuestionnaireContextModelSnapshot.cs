@@ -8,7 +8,7 @@ using Questionnaire_Backend.Data;
 
 namespace Questionnaire_Backend.Migrations
 {
-    [DbContext(typeof(QuestionnaireContext))]
+    [DbContext(typeof(QuestionnaireDbContext))]
     partial class QuestionnaireContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
