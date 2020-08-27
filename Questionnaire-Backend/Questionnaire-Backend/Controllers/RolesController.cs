@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Questionnaire_Backend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class RolesController : ControllerBase
     {

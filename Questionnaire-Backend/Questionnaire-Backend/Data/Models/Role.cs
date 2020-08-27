@@ -7,13 +7,13 @@ namespace Questionnaire_Backend.Data.Models
     public class Role
     {
         [Key] public int Id { get; set; }
-        [MinLength(3), MaxLength(25), Required] public string Name { get; set; }
+        [MinLength(3), MaxLength(25), Required] public string RoleName { get; set; }
 
         public static Role[] Seed = new Role[]
 {
-         new Role() { Id = 1, Name = "Admin"},
-         new Role() { Id = 2, Name = "User"},
-         new Role() { Id = 3, Name = "Other" },
+         new Role() { Id = 1, RoleName = "Admin"},
+         new Role() { Id = 2, RoleName = "User"},
+         new Role() { Id = 3, RoleName = "Other" },
 };
     }
 }

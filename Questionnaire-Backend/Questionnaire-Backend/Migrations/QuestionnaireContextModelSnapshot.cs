@@ -26,7 +26,7 @@ namespace Questionnaire_Backend.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("RoleName")
                         .IsRequired()
                         .HasColumnType("nvarchar(25)")
                         .HasMaxLength(25);
@@ -39,17 +39,17 @@ namespace Questionnaire_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Admin"
+                            RoleName = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "User"
+                            RoleName = "User"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Other"
+                            RoleName = "Other"
                         });
                 });
 
