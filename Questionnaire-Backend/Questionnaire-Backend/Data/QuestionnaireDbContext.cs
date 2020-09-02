@@ -5,7 +5,9 @@ namespace Questionnaire_Backend.Data
 {
     public class QuestionnaireDbContext : DbContext
     {
-        public QuestionnaireDbContext(DbContextOptions<QuestionnaireDbContext> options) : base(options) {}
+        public QuestionnaireDbContext(DbContextOptions<QuestionnaireDbContext> options) : base(options)
+        {
+        }
 
         public DbSet<Questionnaire_Backend.Data.Models.Role> Role { get; set; }
         public DbSet<Questionnaire_Backend.Data.Models.User> User { get; set; }

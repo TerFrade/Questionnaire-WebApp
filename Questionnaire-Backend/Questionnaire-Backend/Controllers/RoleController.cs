@@ -1,9 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Questionnaire_Backend.Data;
+using Questionnaire_Backend.Data.Models;
 using Questionnaire_Backend.DTO;
+using System;
+using System.Threading.Tasks;
 
 namespace Questionnaire_Backend.Controllers
 {
@@ -13,7 +14,10 @@ namespace Questionnaire_Backend.Controllers
     {
         private readonly QuestionnaireDbContext db;
 
-        public RolesController(QuestionnaireDbContext db) { this.db = db; }
+        public RolesController(QuestionnaireDbContext db)
+        {
+            this.db = db;
+        }
 
         // GET: /Roles
         [HttpGet]
@@ -58,6 +62,42 @@ namespace Questionnaire_Backend.Controllers
                 if (role == null) { return NotFound(); }
 
                 return await GetRole(role.Id);
+            }
+            catch (Exception error)
+            {
+                return StatusCode(500, error.Message);
+            }
+        }
+
+        [HttpPost]
+        [Produces(typeof(RoleDTO))]
+        public async Task<IActionResult> Post([FromBody] RoleDTO data)
+        {
+            try
+            {
+                if (await db.Role.FirstOrDefaultAsync(x => x.RoleName == data.RoleName) != null) { return StatusCode(409, "Role already exists!"); }
+                var role = new Role() { RoleName = data.RoleName };
+                db.Role.Add(role);
+                await db.SaveChangesAsync();
+                return await GetRole(role.Id);
+            }
+            catch (Exception error)
+            {
+                return StatusCode(500, error.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        [Produces(typeof(RoleDTO))]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var role = await db.Role.FirstOrDefaultAsync(x => x.Id == id);
+                if (role == null) { return NotFound(); }
+                db.Role.Remove(role);
+                await db.SaveChangesAsync();
+                return Ok(new RoleDTO(role));
             }
             catch (Exception error)
             {
