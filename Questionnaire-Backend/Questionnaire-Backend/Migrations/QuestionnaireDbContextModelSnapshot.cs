@@ -9,7 +9,7 @@ using Questionnaire_Backend.Data;
 namespace Questionnaire_Backend.Migrations
 {
     [DbContext(typeof(QuestionnaireDbContext))]
-    partial class QuestionnaireContextModelSnapshot : ModelSnapshot
+    partial class QuestionnaireDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -80,6 +80,16 @@ namespace Questionnaire_Backend.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("076368ce-1ff7-4a58-bbfd-41838eeca5a4"),
+                            Email = "TerenceFrade@gmail.com",
+                            Password = "asdasd1",
+                            RoleId = 1,
+                            Username = "zENJA"
+                        });
                 });
 
             modelBuilder.Entity("Questionnaire_Backend.Data.Models.User", b =>
