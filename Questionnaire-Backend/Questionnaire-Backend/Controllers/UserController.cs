@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -28,8 +29,8 @@ namespace Questionnaire_Backend.Controllers
         {
             try
             {
-                ICollection<User> users = await db.User.ToArrayAsync();
-                return Ok(await new UserDTO(users.));
+                ICollection<User> users = await db.User.Include(x => x.Role).ToArrayAsync();
+                return Ok(users.Select(x => new UserDTO(x)));
             }
             catch (Exception error)
             {
@@ -79,7 +80,13 @@ namespace Questionnaire_Backend.Controllers
             try
             {
                 if (await db.User.FirstOrDefaultAsync(x => x.Email == data.Email) != null) { return StatusCode(409, "Email already exists!"); }
-                var user = new User() { Id = Guid.NewGuid(), Email = data.Email,  Username = data.Username, Password = data.Password, RoleId = data.Role.Id };
+                var user = new User() { 
+                    Id = Guid.NewGuid(), 
+                    Email = data.Email,  
+                    Username = data.Username, 
+                    Password = data.Password, 
+                    RoleId = data.Role.Id 
+                };
                 db.User.Add(user);
                 await db.SaveChangesAsync();
                 return await GetUser(user.Id);
