@@ -1,0 +1,20 @@
+@import '../../styles.scss';
+
+.active{
+ color: $primary !important;
+}
+
+.nav-item{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+ul{
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-item{
+        margin: unset !important;
+    }
+}
