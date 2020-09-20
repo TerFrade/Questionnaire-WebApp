@@ -1,20 +1,25 @@
-@import '../../styles.scss';
+@import "../../styles.scss";
 
-.active{
- color: $primary !important;
+.active {
+  color: $primary !important;
 }
 
-.nav-item{
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-}
-
-ul{
-    font-weight: 500;
+.nav-item {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 @media only screen and (max-width: 768px) {
-    .nav-item{
-        margin: unset !important;
-    }
+  .nav-item {
+    margin: unset !important;
+  }
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,0,71, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: $primary;
+  box-shadow: none;
 }

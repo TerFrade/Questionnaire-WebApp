@@ -1,0 +1,29 @@
+html,
+body {
+  height: 100%;
+}
+
+.login-container {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    max-width: 22em;
+    text-align: center;
+  }
+
+  .card{
+      text-shadow: none;
+      color: #2D3748;
+  }
+
+  input{
+    border-color: #bee3f8;
+    background-color: #ebf8ff;
+  }
+  input::placeholder{
+    color: #a0aec0;
+  }
+
+  label{
+    font-weight: 500;
+  }

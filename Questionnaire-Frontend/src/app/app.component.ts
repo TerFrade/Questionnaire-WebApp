@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   template: `
-  <navbar></navbar>
-  <main role="main" > <!-- style="padding-top: 4.5rem;" - for fixed top -->
-    <router-outlet></router-outlet>
-  </main>
-  <footer class="container footer">
-  <p>&copy; Questionnaire.io 2020 - Terence Frade Project</p>
-  </footer>
+    <navbar></navbar>
+    <main role="main">
+      <!-- style="padding-top: 4.5rem;" - for fixed top -->
+      <router-outlet></router-outlet>
+    </main>
+    <footer class="container footer">
+      <p>&copy; Questionnaire.io 2020 - Terence Frade Project</p>
+    </footer>
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
-  title = 'Questionnaire-Frontend';
+  title = "Questionnaire-Frontend";
 }

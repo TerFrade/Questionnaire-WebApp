@@ -1,0 +1,32 @@
+<form #form="ngForm">
+    <div>
+        <div class="login-container d-flex p-3 mx-auto flex-column">
+            <div class="mb-1 text-center">
+                <img class="img-fluid" src="../../assets/Belgium Campus New Logo-02.png" width="215" height="125">
+                <h3 class="mb-3 mt-1">Jason Dashboard </h3>
+                <h4>Welcome!</h4>
+                <p>Please sign-in below</p>
+            </div>
+            <div class="card shadow text-left" style="width: 20rem;">
+                <div class="card-body">
+                    <form  #loginForm="ngForm">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="email" class="form-control" placeholder="example@domain.com" name="username">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Something hard to guess"
+                                name="password">
+                        </div>
+                        <div class="d-flex flex-column align-items-center">
+                            <button type="submit" class="btn btn-success w-75 mb-2">
+                                Sign In
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
