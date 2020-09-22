@@ -8,7 +8,7 @@ import { Component } from "@angular/core";
       <!-- style="padding-top: 4.5rem;" - for fixed top -->
       <router-outlet></router-outlet>
     </main>
-    <footer class="container footer">
+    <footer class="container footer text-muted">
       <p>&copy; Questionnaire.io 2020 - Terence Frade Project</p>
     </footer>
   `,
