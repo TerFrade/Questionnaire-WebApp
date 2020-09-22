@@ -1,32 +1,55 @@
-<form #form="ngForm">
-    <div>
-        <div class="login-container d-flex p-3 mx-auto flex-column">
-            <div class="mb-1 text-center">
-                <img class="img-fluid" src="../../assets/Belgium Campus New Logo-02.png" width="215" height="125">
-                <h3 class="mb-3 mt-1">Jason Dashboard </h3>
-                <h4>Welcome!</h4>
-                <p>Please sign-in below</p>
-            </div>
-            <div class="card shadow text-left" style="width: 20rem;">
-                <div class="card-body">
-                    <form  #loginForm="ngForm">
-                        <div class="form-group">
-                            <label>Username</label>
-                            <input type="email" class="form-control" placeholder="example@domain.com" name="username">
-                        </div>
-                        <div class="form-group mb-4">
-                            <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Something hard to guess"
-                                name="password">
-                        </div>
-                        <div class="d-flex flex-column align-items-center">
-                            <button type="submit" class="btn btn-success w-75 mb-2">
-                                Sign In
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<!-- Button trigger modal -->
+<a type="button" class="nav-link" data-toggle="modal" data-target="#exampleModal">
+  Login
+</a>
+
+<!-- Modal -->
+<div class="modal fade text-light" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content  bg-dark">
+      <div class="modal-header">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a type="button" class="nav-link" (click)="isLogin=true">Active</a>
+          </li>
+          <li class="nav-item">
+            <a type="button" class="nav-link" (click)="isLogin=false">Link</a>
+          </li>
+        </ul>
+        <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin" *ngIf="isLogin">
+          <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+        </form>
+        <form class="form-signin" *ngIf="!isLogin">
+          <h1 class="h3 mb-3 font-weight-normal">Please register in</h1>
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block text-dark" type="submit">Sign in</button>
+        </form>
+      </div>
     </div>
-</form>
+  </div>
+</div>
