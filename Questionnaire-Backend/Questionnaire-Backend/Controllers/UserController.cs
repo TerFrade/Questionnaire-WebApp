@@ -8,7 +8,6 @@ using Questionnaire_Backend.Data;
 using Questionnaire_Backend.Data.Models;
 using Questionnaire_Backend.DTO;
 
-
 namespace Questionnaire_Backend.Controllers
 {
     [ApiController]
@@ -63,9 +62,16 @@ namespace Questionnaire_Backend.Controllers
             try
             {
                 var user = await db.User.FirstOrDefaultAsync(x => x.Id == id);
+
                 if (user == null) { return NotFound(); }
 
-                return await GetUser(data.Id);
+                user.Email = data.Email;
+                user.Username = data.Username;
+                user.Password = data.Password;
+
+                await db.SaveChangesAsync();
+
+                return await GetUser(user.Id);
             }
             catch (Exception error)
             {
@@ -79,13 +85,14 @@ namespace Questionnaire_Backend.Controllers
         {
             try
             {
-                if (await db.User.FirstOrDefaultAsync(x => x.Email == data.Email) != null) { return StatusCode(409, "Email already exists!"); }
-                var user = new User() { 
-                    Id = Guid.NewGuid(), 
-                    Email = data.Email,  
-                    Username = data.Username, 
-                    Password = data.Password, 
-                    RoleId = data.Role.Id 
+                if (await db.User.FirstOrDefaultAsync(x => x.Email == data.Email) != null) { return StatusCode(409, "User with this email already exists!"); }
+                var user = new User()
+                {
+                    Id = Guid.NewGuid(),
+                    Email = data.Email,
+                    Username = data.Username,
+                    Password = data.Password,
+                    RoleId = data.RoleId
                 };
                 db.User.Add(user);
                 await db.SaveChangesAsync();

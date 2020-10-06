@@ -9,7 +9,7 @@ namespace Questionnaire_Backend.DTO
         public string Email { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public Role Role { get; set; }
+        public int RoleId { get; set; }
 
         public UserDTO()
         {
@@ -21,7 +21,7 @@ namespace Questionnaire_Backend.DTO
             Email = user.Email;
             Username = user.Username;
             Password = user.Password;
-            Role = user.Role;
+            RoleId = user.RoleId;
         }
     }
 }

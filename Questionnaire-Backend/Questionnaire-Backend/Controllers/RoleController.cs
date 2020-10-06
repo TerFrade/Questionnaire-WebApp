@@ -59,7 +59,12 @@ namespace Questionnaire_Backend.Controllers
             try
             {
                 var role = await db.Role.FirstOrDefaultAsync(x => x.Id == id);
+
                 if (role == null) { return NotFound(); }
+
+                role.RoleName = data.RoleName;
+
+                await db.SaveChangesAsync();
 
                 return await GetRole(role.Id);
             }
