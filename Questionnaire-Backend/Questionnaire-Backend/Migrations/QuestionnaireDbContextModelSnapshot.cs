@@ -19,6 +19,38 @@ namespace Questionnaire_Backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Questionnaire_Backend.Data.Models.Questionnaire", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Questionnaires");
+                });
+
             modelBuilder.Entity("Questionnaire_Backend.Data.Models.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -80,16 +112,15 @@ namespace Questionnaire_Backend.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("076368ce-1ff7-4a58-bbfd-41838eeca5a4"),
-                            Email = "TerenceFrade@gmail.com",
-                            Password = "asdasd1",
-                            RoleId = 1,
-                            Username = "zENJA"
-                        });
+            modelBuilder.Entity("Questionnaire_Backend.Data.Models.Questionnaire", b =>
+                {
+                    b.HasOne("Questionnaire_Backend.Data.Models.User", "User")
+                        .WithMany("Questionnaires")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Questionnaire_Backend.Data.Models.User", b =>

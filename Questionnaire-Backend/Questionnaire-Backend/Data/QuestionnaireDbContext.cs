@@ -15,7 +15,8 @@ namespace Questionnaire_Backend.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasData(Questionnaire_Backend.Data.Models.Role.Seed);
-            modelBuilder.Entity<User>().HasData(Questionnaire_Backend.Data.Models.User.Seed);
         }
+
+        public DbSet<Questionnaire_Backend.Data.Models.Questionnaire> Questionnaire { get; set; }
     }
 }
