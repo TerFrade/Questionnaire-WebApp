@@ -12,7 +12,6 @@ namespace Questionnaire_Backend.Data.Models
         [Required] public string Email { get; set; }
         [MinLength(3), MaxLength(25), Required] public string Username { get; set; }
         [Required] public string Password { get; set; }
-        public int RoleId { get; set; }
         [Required, ForeignKey("RoleId")] public Role Role { get; set; }
         public virtual ICollection<Questionnaire> Questionnaires { get; set; }
     }

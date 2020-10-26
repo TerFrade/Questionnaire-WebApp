@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Questionnaire_Backend.DTO
 {
-    public class QuestionnareDTO
+    public class QuestionnaireDTO
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
@@ -15,11 +15,11 @@ namespace Questionnaire_Backend.DTO
         public string Link { get; set; }
         public Guid UserId { get; set; }
 
-        public QuestionnareDTO()
+        public QuestionnaireDTO()
         {
         }
 
-        public QuestionnareDTO(Questionnaire questionnaire)
+        public QuestionnaireDTO(Questionnaire questionnaire)
         {
             Id = questionnaire.Id;
             Title = questionnaire.Title;

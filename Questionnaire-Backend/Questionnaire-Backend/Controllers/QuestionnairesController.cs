@@ -23,13 +23,13 @@ namespace Questionnaire_Backend.Controllers
 
         // GET: /Questionnaires
         [HttpGet]
-        [Produces(typeof(QuestionnareDTO))]
+        [Produces(typeof(QuestionnaireDTO))]
         public async Task<IActionResult> GetQuestionnaire()
         {
             try
             {
                 ICollection<Questionnaire> questionnaires = await db.Questionnaire.Include(x => x.User).ToArrayAsync();
-                return Ok(questionnaires.Select(x => new QuestionnareDTO(x)));
+                return Ok(questionnaires.Select(x => new QuestionnaireDTO(x)));
             }
             catch (Exception error)
             {
@@ -39,14 +39,14 @@ namespace Questionnaire_Backend.Controllers
 
         // GET: /Questionnaires/[Guid]
         [HttpGet("{id}")]
-        [Produces(typeof(QuestionnareDTO))]
+        [Produces(typeof(QuestionnaireDTO))]
         public async Task<IActionResult> GetQuestionnaire(Guid id)
         {
             try
             {
                 var questionnaire = await db.Questionnaire.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
                 if (questionnaire == null) { return NotFound(); }
-                return Ok(new QuestionnareDTO(questionnaire));
+                return Ok(new QuestionnaireDTO(questionnaire));
             }
             catch (Exception error)
             {
@@ -56,8 +56,8 @@ namespace Questionnaire_Backend.Controllers
 
         // PUT: /Questionnaires/[Guid]
         [HttpPut("{id}")]
-        [Produces(typeof(QuestionnareDTO))]
-        public async Task<IActionResult> Put(Guid id, [FromBody] QuestionnareDTO data)
+        [Produces(typeof(QuestionnaireDTO))]
+        public async Task<IActionResult> Put(Guid id, [FromBody] QuestionnaireDTO data)
         {
             try
             {
@@ -80,8 +80,8 @@ namespace Questionnaire_Backend.Controllers
         }
 
         [HttpPost]
-        [Produces(typeof(QuestionnareDTO))]
-        public async Task<IActionResult> Post([FromBody] QuestionnareDTO data)
+        [Produces(typeof(QuestionnaireDTO))]
+        public async Task<IActionResult> Post([FromBody] QuestionnaireDTO data)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace Questionnaire_Backend.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Produces(typeof(QuestionnareDTO))]
+        [Produces(typeof(QuestionnaireDTO))]
         public async Task<IActionResult> Delete(Guid id)
         {
             try
@@ -116,7 +116,7 @@ namespace Questionnaire_Backend.Controllers
                 if (questionnaire == null) { return NotFound(); }
                 db.Questionnaire.Remove(questionnaire);
                 await db.SaveChangesAsync();
-                return Ok(new QuestionnareDTO(questionnaire));
+                return Ok(new QuestionnaireDTO(questionnaire));
             }
             catch (Exception error)
             {

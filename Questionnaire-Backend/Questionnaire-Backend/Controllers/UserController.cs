@@ -92,7 +92,16 @@ namespace Questionnaire_Backend.Controllers
                     Email = data.Email,
                     Username = data.Username,
                     Password = data.Password,
-                    RoleId = data.RoleId
+                    Role = await db.Role.FirstOrDefaultAsync(x => x.Id == data.Role.Id),
+                    Questionnaires = data.Questionnaires != null ? data.Questionnaires
+                    .Select(x => new Questionnaire()
+                    {
+                        Title = x.Title,
+                        Description = x.Description,
+                        IsPublic = x.IsPublic,
+                        Link = x.Link
+
+                    }).ToList() : null
                 };
                 db.User.Add(user);
                 await db.SaveChangesAsync();

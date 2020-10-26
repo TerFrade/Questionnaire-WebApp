@@ -11,10 +11,10 @@
       <div class="modal-header">
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a type="button" class="nav-link" (click)="isLogin=true">Active</a>
+            <a type="button" class="nav-link" (click)="isLogin=true">Login</a>
           </li>
           <li class="nav-item">
-            <a type="button" class="nav-link" (click)="isLogin=false">Link</a>
+            <a type="button" class="nav-link" (click)="isLogin=false">Register</a>
           </li>
         </ul>
         <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
@@ -22,6 +22,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <!-- Login Section -->
         <form class="form-signin" *ngIf="isLogin">
           <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
           <label for="inputEmail" class="sr-only">Email address</label>
@@ -33,9 +34,10 @@
               <input type="checkbox" value="remember-me"> Remember me
             </label>
           </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <button class="btn btn-lg btn-primary btn-block text-dark font-weight-bold" type="submit">Sign in</button>
           <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
         </form>
+        <!-- Register Section -->
         <form class="form-signin" *ngIf="!isLogin">
           <h1 class="h3 mb-3 font-weight-normal">Please register in</h1>
           <label for="inputEmail" class="sr-only">Email address</label>
@@ -47,7 +49,7 @@
               <input type="checkbox" value="remember-me"> Remember me
             </label>
           </div>
-          <button class="btn btn-lg btn-primary btn-block text-dark" type="submit">Sign in</button>
+          <button class="btn btn-lg btn-primary btn-block text-dark font-weight-bold" type="submit">Sign in</button>
         </form>
       </div>
     </div>
