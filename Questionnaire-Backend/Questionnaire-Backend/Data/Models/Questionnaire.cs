@@ -17,5 +17,6 @@ namespace Questionnaire_Backend.Data.Models
         public string Link { get; set; }
         public Guid UserId { get; set; }
         [ForeignKey("UserId"), Required] public virtual User User { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }

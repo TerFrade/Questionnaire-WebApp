@@ -92,7 +92,7 @@ namespace Questionnaire_Backend.Controllers
                     Email = data.Email,
                     Username = data.Username,
                     Password = data.Password,
-                    Role = await db.Role.FirstOrDefaultAsync(x => x.Id == data.Role.Id),
+                    Role = data.Role != null ? await db.Role.FirstOrDefaultAsync(x => x.Id == data.Role.Id) : await db.Role.FirstOrDefaultAsync(x => x.Id == 1),
                     Questionnaires = data.Questionnaires != null ? data.Questionnaires
                     .Select(x => new Questionnaire()
                     {
