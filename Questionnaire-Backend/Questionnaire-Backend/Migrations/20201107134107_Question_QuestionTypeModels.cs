@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Questionnaire_Backend.Migrations
 {
-    public partial class Question_QuestionType_Models : Migration
+    public partial class Question_QuestionTypeModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,6 @@ namespace Questionnaire_Backend.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     QuestionText = table.Column<string>(nullable: true),
                     Picture = table.Column<byte[]>(nullable: true),
-                    Index = table.Column<int>(nullable: false),
                     IsRequired = table.Column<bool>(nullable: false),
                     QuestionnaireId = table.Column<Guid>(nullable: false),
                     QuestionTypeId = table.Column<int>(nullable: false),
@@ -49,6 +48,17 @@ namespace Questionnaire_Backend.Migrations
                         principalTable: "Questionnaires",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "QuestionType",
+                columns: new[] { "Id", "TypeName" },
+                values: new object[,]
+                {
+                    { 1, "Mutliple Choice" },
+                    { 2, "Dropdown" },
+                    { 3, "Short Input" },
+                    { 4, "Long Input" }
                 });
 
             migrationBuilder.CreateIndex(

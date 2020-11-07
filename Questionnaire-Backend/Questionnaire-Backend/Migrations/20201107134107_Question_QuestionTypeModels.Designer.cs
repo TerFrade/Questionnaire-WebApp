@@ -10,8 +10,8 @@ using Questionnaire_Backend.Data;
 namespace Questionnaire_Backend.Migrations
 {
     [DbContext(typeof(QuestionnaireDbContext))]
-    [Migration("20201105123426_Question_QuestionType_Models")]
-    partial class Question_QuestionType_Models
+    [Migration("20201107134107_Question_QuestionTypeModels")]
+    partial class Question_QuestionTypeModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,9 +29,6 @@ namespace Questionnaire_Backend.Migrations
 
                     b.Property<string>("AvailableAnswers")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Index")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsRequired")
                         .HasColumnType("bit");
@@ -75,6 +72,28 @@ namespace Questionnaire_Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("QuestionType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            TypeName = "Mutliple Choice"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            TypeName = "Dropdown"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            TypeName = "Short Input"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            TypeName = "Long Input"
+                        });
                 });
 
             modelBuilder.Entity("Questionnaire_Backend.Data.Models.Questionnaire", b =>

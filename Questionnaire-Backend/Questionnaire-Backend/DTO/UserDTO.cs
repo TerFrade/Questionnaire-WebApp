@@ -1,17 +1,18 @@
-﻿using System;
-using Questionnaire_Backend.Data.Models;
+﻿using Questionnaire_Backend.Data.Models;
+using System;
 using System.Linq;
 
 namespace Questionnaire_Backend.DTO
 {
     public class UserDTO
     {
-        public Guid Id { get; set; } 
+        public Guid Id { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public RoleDTO Role { get; set; }
         public QuestionnaireDTO[] Questionnaires { get; set; }
+
         public UserDTO()
         {
         }

@@ -14,6 +14,8 @@
     <Compile Remove="Migrations\20201026115653_UserModelUpdate.Designer.cs" />
     <Compile Remove="Migrations\20201105122515_Question_QuestionType_Models.cs" />
     <Compile Remove="Migrations\20201105122515_Question_QuestionType_Models.Designer.cs" />
+    <Compile Remove="Migrations\20201105123426_Question_QuestionType_Models.cs" />
+    <Compile Remove="Migrations\20201105123426_Question_QuestionType_Models.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

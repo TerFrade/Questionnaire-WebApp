@@ -9,13 +9,12 @@ namespace Questionnaire_Backend.Data.Models
         [Key] public Guid Id { get; set; }
         public string QuestionText { get; set; }
         public byte[] Picture { get; set; }
-        public int Index { get; set; }
         public bool IsRequired { get; set; }
         public Guid QuestionnaireId { get; set; }
         [ForeignKey("QuestionnaireId"), Required] public virtual Questionnaire Questionnaire { get; set; }
         public int QuestionTypeId { get; set; }
         [ForeignKey("QuestionTypeId"), Required] public virtual QuestionType QuestionType { get; set; }
-        public  string AvailableAnswers { get; set; }
+        public string AvailableAnswers { get; set; }
         public string Responses { get; set; }
     }
 }

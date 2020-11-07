@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Questionnaire_Backend.Data;
 using Questionnaire_Backend.Data.Models;
 using Questionnaire_Backend.DTO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Questionnaire_Backend.Controllers
 {
@@ -100,7 +100,6 @@ namespace Questionnaire_Backend.Controllers
                         Description = x.Description,
                         IsPublic = x.IsPublic,
                         Link = x.Link
-
                     }).ToList() : null
                 };
                 db.User.Add(user);

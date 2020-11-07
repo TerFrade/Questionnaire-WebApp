@@ -28,9 +28,6 @@ namespace Questionnaire_Backend.Migrations
                     b.Property<string>("AvailableAnswers")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Index")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsRequired")
                         .HasColumnType("bit");
 
@@ -73,6 +70,28 @@ namespace Questionnaire_Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("QuestionType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            TypeName = "Mutliple Choice"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            TypeName = "Dropdown"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            TypeName = "Short Input"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            TypeName = "Long Input"
+                        });
                 });
 
             modelBuilder.Entity("Questionnaire_Backend.Data.Models.Questionnaire", b =>
