@@ -28,7 +28,7 @@ namespace Questionnaire_Backend.Controllers
         {
             try
             {
-                ICollection<Questionnaire> questionnaires = await db.Questionnaire.Include(x => x.User).ToArrayAsync();
+                ICollection<Questionnaire> questionnaires = await db.Questionnaire.Include(x => x.User).Include(x => x.Questions).ToArrayAsync();
                 return Ok(questionnaires.Select(x => new QuestionnaireDTO(x)));
             }
             catch (Exception error)

@@ -28,7 +28,7 @@ namespace Questionnaire_Backend.Controllers
         {
             try
             {
-                ICollection<User> users = await db.User.Include(x => x.Role).ToArrayAsync();
+                ICollection<User> users = await db.User.Include(x => x.Role).Include(x => x.Questionnaires).ThenInclude(x => x.Questions).ToArrayAsync();
                 return Ok(users.Select(x => new UserDTO(x)));
             }
             catch (Exception error)
@@ -93,7 +93,7 @@ namespace Questionnaire_Backend.Controllers
                     Username = data.Username,
                     Password = data.Password,
                     Role = data.Role != null ? await db.Role.FirstOrDefaultAsync(x => x.Id == data.Role.Id) : await db.Role.FirstOrDefaultAsync(x => x.Id == 1),
-                    Questionnaires = data.Questionnaires != null ? data.Questionnaires
+                    Questionnaires = data.Questionnaires.Length != 0 ? data.Questionnaires
                     .Select(x => new Questionnaire()
                     {
                         Title = x.Title,

@@ -1,5 +1,6 @@
 ﻿using Questionnaire_Backend.Data.Models;
 using System;
+using System.Linq;
 
 namespace Questionnaire_Backend.DTO
 {
@@ -11,6 +12,7 @@ namespace Questionnaire_Backend.DTO
         public bool IsPublic { get; set; }
         public string Link { get; set; }
         public Guid UserId { get; set; }
+        public QuestionDTO[] Questions { get; set; }
 
         public QuestionnaireDTO()
         {
@@ -24,6 +26,8 @@ namespace Questionnaire_Backend.DTO
             IsPublic = questionnaire.IsPublic;
             Link = questionnaire.Link;
             UserId = questionnaire.UserId;
+            if (questionnaire.Questions != null)
+                Questions = questionnaire.Questions.Select(x => new QuestionDTO(x)).ToArray();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Questionnaire_Backend.Data
         public DbSet<Questionnaire_Backend.Data.Models.Role> Role { get; set; }
         public DbSet<Questionnaire_Backend.Data.Models.User> User { get; set; }
         public DbSet<Questionnaire_Backend.Data.Models.Questionnaire> Questionnaire { get; set; }
+        public DbSet<Questionnaire_Backend.Data.Models.Question> Question { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
