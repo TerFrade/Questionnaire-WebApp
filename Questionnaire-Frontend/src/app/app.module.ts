@@ -20,11 +20,10 @@ import { LoginComponent } from "./login/login.component";
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: "Home", component: DashboardComponent },
-      { path: "login", component: LoginComponent },
-
-      { path: "**", redirectTo: "/Home", pathMatch: "full" }, //for 404 page not found.
-    ]),
+    { path: "Home", component: DashboardComponent },
+    { path: "login", component: LoginComponent },
+    { path: "**", redirectTo: "/Home", pathMatch: "full" },
+], { relativeLinkResolution: 'legacy' }),
   ],
   providers: [],
   bootstrap: [AppComponent],

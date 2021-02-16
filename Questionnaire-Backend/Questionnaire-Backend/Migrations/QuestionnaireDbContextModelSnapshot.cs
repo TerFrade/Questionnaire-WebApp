@@ -15,9 +15,9 @@ namespace Questionnaire_Backend.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("Questionnaire_Backend.Data.Models.Question", b =>
                 {
@@ -60,12 +60,12 @@ namespace Questionnaire_Backend.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("TypeName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("Id");
 
@@ -102,8 +102,8 @@ namespace Questionnaire_Backend.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<bool>("IsPublic")
                         .HasColumnType("bit");
@@ -113,8 +113,8 @@ namespace Questionnaire_Backend.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -131,12 +131,12 @@ namespace Questionnaire_Backend.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("RoleName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.HasKey("Id");
 
@@ -174,14 +174,13 @@ namespace Questionnaire_Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoleId")
-                        .IsRequired()
+                    b.Property<int>("RoleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.HasKey("Id");
 
@@ -203,6 +202,10 @@ namespace Questionnaire_Backend.Migrations
                         .HasForeignKey("QuestionnaireId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Questionnaire");
+
+                    b.Navigation("QuestionType");
                 });
 
             modelBuilder.Entity("Questionnaire_Backend.Data.Models.Questionnaire", b =>
@@ -212,6 +215,8 @@ namespace Questionnaire_Backend.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Questionnaire_Backend.Data.Models.User", b =>
@@ -221,6 +226,23 @@ namespace Questionnaire_Backend.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("Questionnaire_Backend.Data.Models.QuestionType", b =>
+                {
+                    b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("Questionnaire_Backend.Data.Models.Questionnaire", b =>
+                {
+                    b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("Questionnaire_Backend.Data.Models.User", b =>
+                {
+                    b.Navigation("Questionnaires");
                 });
 #pragma warning restore 612, 618
         }
