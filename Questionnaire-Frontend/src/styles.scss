@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+
+
+$primary:       #7C3AED !default;
+$secondary:     #F97316 !default;
+$success:       #16A34A !default;
+$info:          #0EA5E9 !default;
+$warning:       #FACC15 !default;
+$danger:        #DC2626 !default;
+$light:         #F9FAFB !default;
+$dark:          #171717 !default;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+body{
+    background-color: $light;
+}
