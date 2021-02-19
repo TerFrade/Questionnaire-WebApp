@@ -1,29 +1,30 @@
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
-
-$primary:       #7C3AED !default;
-$secondary:     #F97316 !default;
-$success:       #16A34A !default;
-$info:          #0EA5E9 !default;
-$warning:       #FACC15 !default;
-$danger:        #DC2626 !default;
-$light:         #F9FAFB !default;
-$dark:          #171717 !default;
+$primary: #7c3aed !default;
+$secondary: #f97316 !default;
+$success: #16a34a !default;
+$info: #0ea5e9 !default;
+$warning: #facc15 !default;
+$danger: #dc2626 !default;
+$light: #f9fafb !default;
+$dark: #171717 !default;
 
 $theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
 );
 
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
-body{
-    background-color: $light;
+body {
+  background-color: $light;
+  font-family: Arial, Helvetica, sans-serif;
 }
