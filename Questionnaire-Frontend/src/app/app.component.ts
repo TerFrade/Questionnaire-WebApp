@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
   template: ` <navbar></navbar>
     <main role="main">
       <!-- style="padding-top: 5rem;" - for fixed top -->
-      <router-outlet><home></home></router-outlet>
+      <router-outlet></router-outlet>
     </main>
     <footer class="container footer text-muted">
       <p>&copy; Questionnaire.io 2021 - Terence Frade Project</p>

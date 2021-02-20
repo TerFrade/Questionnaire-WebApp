@@ -1,1 +1,30 @@
-<p>login works!</p>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-secondary fw-bold" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-control" placeholder="example@domain.com" name="email" />
+          </div>
+          <div class="form-group mb-4">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="Something hard to guess" name="password" />
+          </div>
+          <div class="d-flex flex-column align-items-center">
+            <button type="submit" class="btn btn-success w-75 mb-2">Sign In</button>
+            <button class="btn btn-outline-success w-75">Create Account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
