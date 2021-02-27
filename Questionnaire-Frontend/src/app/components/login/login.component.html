@@ -1,17 +1,20 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-secondary fw-bold" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+<button type="button" class="btn btn-outline-secondary fw-bold" data-bs-toggle="modal" data-bs-target="#loginModal" (click)="isLogin = true">Login</button>
 
-<!-- Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+        <h5 class="modal-title text-primary" id="exampleModalLabel" *ngIf="isLogin == true">Login</h5>
+        <h5 class="modal-title text-primary" id="exampleModalLabel" *ngIf="isLogin == false">Register</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body align-self-center">
         <form>
-          <div class="form-group">
+          <div class="form-group mb-3" *ngIf="isLogin == false">
+            <label>Username</label>
+            <input class="form-control" placeholder="Cool nickname" name="username" />
+          </div>
+          <div class="form-group mb-3">
             <label>Email Address</label>
             <input type="email" class="form-control" placeholder="example@domain.com" name="email" />
           </div>
@@ -19,9 +22,11 @@
             <label>Password</label>
             <input type="password" class="form-control" placeholder="Something hard to guess" name="password" />
           </div>
-          <div class="d-flex flex-column align-items-center">
-            <button type="submit" class="btn btn-success w-75 mb-2">Sign In</button>
-            <button class="btn btn-outline-success w-75">Create Account</button>
+          <div class="d-flex flex-column text-center">
+            <button type="button" class="text-light btn btn-primary mb-2" *ngIf="isLogin == true">Sign In</button>
+            <button type="button" class="text-light btn btn-primary mb-2" *ngIf="isLogin == false">Create Account</button>
+            <p class="fw-light" *ngIf="isLogin == true">Don't have an account? <a href="javascript:void(0);" (click)="isLogin = !isLogin">Sign up.</a></p>
+            <p class="fw-light" *ngIf="isLogin == false">Have an account? <a href="javascript:void(0);" (click)="isLogin = true">Login.</a></p>
           </div>
         </form>
       </div>

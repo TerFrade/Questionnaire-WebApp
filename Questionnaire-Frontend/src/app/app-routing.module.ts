@@ -2,8 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { HomeComponent } from "./components/home/home.component";
-import { LoginComponent } from "./components/login/login.component";
-import { NavbarComponent } from "./components/navbar/navbar.component";
+import { QuestionnaireComponent } from "./components/questionnaire/questionnaire.component";
 
 const routes: Routes = [];
 
@@ -12,7 +11,7 @@ const routes: Routes = [];
     RouterModule.forRoot(
       [
         { path: "Home", component: HomeComponent },
-        { path: "login", component: LoginComponent },
+        { path: "Questionnaires", component: QuestionnaireComponent },
         { path: "**", redirectTo: "/Home", pathMatch: "full" },
       ],
       { relativeLinkResolution: "legacy" }
